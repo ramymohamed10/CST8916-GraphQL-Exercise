@@ -1,0 +1,53 @@
+### Welcome Message
+GET http://localhost:8000/
+
+### Health Check
+GET http://localhost:8000/health
+
+### Query All Users
+POST http://localhost:8000/graphql
+Content-Type: application/json
+
+{
+  "query": "query { users { id, name, age } }"
+}
+
+### Query a Single User by ID
+POST http://localhost:8000/graphql
+Content-Type: application/json
+
+{
+  "query": "query { user(id: 1) { id, name, age } }"
+}
+
+### Create a New User
+POST http://localhost:8000/graphql
+Content-Type: application/json
+
+{
+  "query": "mutation { createUser(name: \"Charlie\", age: 28) { id, name, age } }"
+}
+
+### Update an Existing User
+POST http://localhost:8000/graphql
+Content-Type: application/json
+
+{
+  "query": "mutation { updateUser(id: \"1\", name: \"Alice Updated\", age: 26) { id, name, age } }"
+}
+
+### Delete a User
+POST http://localhost:8000/graphql
+Content-Type: application/json
+
+{
+  "query": "mutation { deleteUser(id: \"2\") }"
+}
+
+### Query All Users After Deletion
+POST http://localhost:8000/graphql
+Content-Type: application/json
+
+{
+  "query": "query { users { id, name, age } }"
+}
